@@ -1,3 +1,16 @@
+#' Title
+#'
+#' @param resource resorce to get from api
+#' @param ... other params
+#' @param quantity quantity of resrources to return
+#' @param locale locale param for api
+#' @param seed seed param for api
+#'
+#' @return list of status, api code, total num of resources, data
+#' @export
+#'
+#' @examples
+#' faker()
 faker <- function(resource, ..., quantity = 1, locale = "en_US", seed = NULL) {
   params <- list(
     ...,
