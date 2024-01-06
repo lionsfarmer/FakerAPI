@@ -1,4 +1,4 @@
-#' Title
+#' faker
 #'
 #' @param resource resorce to get from api
 #' @param ... other params

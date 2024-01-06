@@ -2,7 +2,7 @@
 % Please edit documentation in R/faker.R
 \name{faker}
 \alias{faker}
-\title{Title}
+\title{faker}
 \usage{
 faker(resource, ..., quantity = 1, locale = "en_US", seed = NULL)
 }
@@ -21,7 +21,7 @@ faker(resource, ..., quantity = 1, locale = "en_US", seed = NULL)
 list of status, api code, total num of resources, data
 }
 \description{
-Title
+faker
 }
 \examples{
 str(faker("images", width = 300))
