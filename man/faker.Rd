@@ -24,5 +24,5 @@ list of status, api code, total num of resources, data
 Title
 }
 \examples{
-faker()
+str(faker("images", width = 300))
 }
