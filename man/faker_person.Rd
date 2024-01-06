@@ -33,5 +33,5 @@ list of status, api code, total number resrouces returned, data
 faker_person
 }
 \examples{
-str(faker_person("male"))
+faker_person("male", quantity = 5)
 }

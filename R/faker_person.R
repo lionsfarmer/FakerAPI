@@ -11,9 +11,25 @@
 #' @export
 #'
 #' @examples
-#' str(faker_person("male"))
+#' faker_person("male", quantity = 5)
 faker_person <- function(gender = NULL, birthday_start = NULL, birthday_end = NULL, quantity = 1, locale = "en_US", seed = NULL) {
-  faker(
+  if (!is.null(gender)) {
+    gender <- match.arg(gender, c("male", "female"))
+  }
+  if (!is.null(birthday_start)) {
+    if (!inherits(birthday_start, "Date")) {
+      stop("`birthday_start` must be a date")
+    }
+    birthday_start <- format(birthday_start, "%Y-%m-%d")
+  }
+  if (!is.null(birthday_end)) {
+    if (!inherits(birthday_end, "Date")) {
+      stop("`birthday_end` must be a date")
+    }
+    birthday_end <- format(birthday_end, "%Y-%m-%d")
+  }
+
+  json <- faker(
     "persons",
     gender = gender,
     birthday_start = birthday_start,
@@ -22,4 +38,12 @@ faker_person <- function(gender = NULL, birthday_start = NULL, birthday_end = NU
     locale = locale,
     seed = seed
   )
+
+  tibble::tibble(
+    firstname = purrr::map_chr(json$data, "firstname"),
+    lastname = purrr::map_chr(json$data, "lastname"),
+    email = purrr::map_chr(json$data, "email"),
+    gender = purrr::map_chr(json$data, "gender")
+  )
 }
+
