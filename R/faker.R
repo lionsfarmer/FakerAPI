@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' faker()
+#' str(faker("images", width = 300))
 faker <- function(resource, ..., quantity = 1, locale = "en_US", seed = NULL) {
   params <- list(
     ...,
@@ -27,5 +27,3 @@ faker <- function(resource, ..., quantity = 1, locale = "en_US", seed = NULL) {
     httr2::req_perform() |>
     httr2::resp_body_json()
 }
-
-str(faker("images", width = 300))
